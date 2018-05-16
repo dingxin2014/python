@@ -1,0 +1,56 @@
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
+#快速排序
+
+#递归实现
+def quickSort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr)/2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quickSort(left) + middle + quickSort(right)
+
+#非递归实现
+#一次分割
+def partition(arr, start, end):
+    #赋值后 arr[start]将留出一个空位
+    pivot = arr[start]
+    while start < end:
+        while start < end and arr[end] > pivot:
+            end -= 1
+        #while跳出 说明这个时候右边数值小于pivot
+        arr[start] = arr[end]
+        while start < end and arr[start] < pivot:
+            start += 1
+        arr[end] = arr[start]
+    arr[start] = pivot
+    return start
+
+
+def quickSort2(arr):
+    left = 0
+    right = len(arr) - 1
+    s = [left, right]
+    while len(s) > 0:
+        left = s.pop(0)
+        right = s.pop(0)
+        k = partition(arr, left, right)
+        if left < k - 1:
+            s.append(left)
+            s.append(k - 1)
+        if right > k + 1:
+            s.append(k + 1)
+            s.append(right)
+
+
+
+
+
+if __name__ == '__main__':
+    arr = [10, 8, 3, 6, 1, 2, 2, 7,9]
+    # print quickSort(arr)
+    print quickSort2(arr)
+
+

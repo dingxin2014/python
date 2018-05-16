@@ -11,41 +11,44 @@ class node(object):
 
 # 深度
 def depth(tree):
-    if tree == None:
+    if tree is None:
         return 0
     left, right = depth(tree.left), depth(tree.right)
     return max(left, right) + 1
 
-#前序遍历
+
+# 前序遍历
 def pre_order(tree):
-    if tree == None:
+    if tree is None:
         return
     print tree.data
     pre_order(tree.left)
     pre_order(tree.right)
 
-#中序遍历
+
+# 中序遍历
 def mid_order(tree):
-    if tree == None:
+    if tree is None:
         return
     mid_order(tree.left)
     print tree.data
     mid_order(tree.right)
 
-#后序遍历
+
+# 后序遍历
 def post_order(tree):
-    if tree == None:
+    if tree is None:
         return
     post_order(tree.left)
     post_order(tree.right)
     print tree.data
 
-#层次遍历
+
+# 层次遍历
 def level_order(tree):
-    if tree == None:
+    if tree is None:
         return
-    q = []
-    q.append(tree)
+    q = [tree]
     while q:
         current = q.pop(0)
         print current.data
@@ -54,12 +57,12 @@ def level_order(tree):
         if current.right != None:
             q.append(current.right)
 
-#按层次打印
+
+# 按层次打印
 def level2_order(tree):
-    if tree == None:
+    if tree is None:
         return
-    q = []
-    q.append(tree)
+    q = [tree]
     results = {}
     level = 0
     current_level_num = 1
@@ -72,7 +75,7 @@ def level2_order(tree):
         if current.left != None:
             q.append(current.left)
             next_level_num += 1
-        if current.right != None:
+        if current.right is not None:
             q.append(current.right)
             next_level_num += 1
         if current_level_num == 0:
@@ -82,6 +85,7 @@ def level2_order(tree):
             d = []
             level += 1
     print results
+
 
 if __name__ == '__main__':
     tree = node('D', node('B', node('A'), node('C')),

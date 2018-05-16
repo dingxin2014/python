@@ -1,0 +1,21 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# 希尔排序
+# 时间复杂度 O(n)
+# 空间复杂度 O(n√n)
+# 稳定性 不稳定
+
+def shell_sort(array):
+    gap = len(array)
+    while gap > 1:
+        gap = gap // 2
+        for i in range(gap, len(array)):
+           for j in range(i % gap, i, gap):
+               if array[i] < array[j]:
+                   array[i], array[j] = array[j], array[i]
+    return array
+
+
+if __name__ == '__main__':
+    arr = [10, 8, 3, 6, 1, 2, 2, 7, 9]
+    print shell_sort(arr)
