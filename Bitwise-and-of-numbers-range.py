@@ -12,3 +12,5 @@ class Solution(object):
             a &= (i + 1)
             i += 1
         return a
+
+

@@ -52,9 +52,9 @@ def level_order(tree):
     while q:
         current = q.pop(0)
         print current.data
-        if current.left != None:
+        if current.left is not None:
             q.append(current.left)
-        if current.right != None:
+        if current.right is not None:
             q.append(current.right)
 
 
@@ -62,21 +62,21 @@ def level_order(tree):
 def level2_order(tree):
     if tree is None:
         return
-    q = [tree]
+    root = [tree]
     results = {}
     level = 0
     current_level_num = 1
     next_level_num = 0
     d = []
-    while q:
-        current = q.pop(0)
+    while root:
+        current = root.pop(0)
         current_level_num -= 1
         d.append(current.data)
-        if current.left != None:
-            q.append(current.left)
+        if current.left is not None:
+            root.append(current.left)
             next_level_num += 1
         if current.right is not None:
-            q.append(current.right)
+            root.append(current.right)
             next_level_num += 1
         if current_level_num == 0:
             current_level_num = next_level_num
